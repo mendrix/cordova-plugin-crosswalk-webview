@@ -113,6 +113,14 @@ cdvPluginPostBuildExtras.add({
       }
     }
 
+    android {
+        defaultConfig {
+            ndk {
+                abiFilters "armeabi-v7a", "x86", "x86_64", "arm64-v8a"
+            }
+        }
+    }
+
     def xwalkSpec = xwalkVersion
     if (ext.xwalkMode == LITE_MODE) {
         xwalkSpec = xwalkLiteVersion;
