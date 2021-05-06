@@ -1,4 +1,4 @@
-# cordova-plugin-crosswalk-webview-v3
+# cordova-plugin-crosswalk-webview
 
 This is a fork of original [cordova-plugin-crosswalk-webview](https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview) library, which aims to provide compatibility with latest cordova versions.
 
@@ -26,7 +26,7 @@ platforms/android/gradle.properties must have:
 * Add this plugin
 
 ```
-$ cordova plugin add cordova-plugin-crosswalk-webview-v3
+$ cordova plugin add cordova-plugin-crosswalk-webview
 ```
 
 * Build
