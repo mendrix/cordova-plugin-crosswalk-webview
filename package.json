@@ -1,6 +1,6 @@
 {
-  "name": "cordova-plugin-crosswalk-webview",
-  "version": "2.4.0",
+  "name": "cordova-plugin-crosswalk-webview-v3",
+  "version": "3.0.4",
   "description": "Changes the default WebView to CrossWalk",
   "cordova": {
     "id": "cordova-plugin-crosswalk-webview",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview.git"
+    "url": "https://github.com/mendrix/cordova-plugin-crosswalk-webview#cordova-9"
   },
   "keywords": [
     "cordova",
@@ -36,14 +36,15 @@
         "cordova-android": ">=6"
       },
       "3.0.0": {
-        "cordova": ">100"
+        "cordova": ">=8.0.0",
+        "cordova-android": ">=7"
       }
     }
   },
   "author": "",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://crosswalk-project.org/jira"
+    "url": "https://github.com/mendrix/cordova-plugin-crosswalk-webview/issues"
   },
-  "homepage": "https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview"
+  "homepage": "https://github.com/mendrix/cordova-plugin-crosswalk-webview"
 }
