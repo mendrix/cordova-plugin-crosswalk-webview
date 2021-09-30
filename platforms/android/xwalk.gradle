@@ -116,8 +116,43 @@ cdvPluginPostBuildExtras.add({
     android {
         defaultConfig {
             ndk {
-                abiFilters "armeabi-v7a", "x86", "x86_64", "arm64-v8a"
+                if(abiFilters && cdvBuildMultipleApks)
+                    abiFilters.clear()
+                else
+                    abiFilters "armeabi-v7a", "x86", "x86_64", "arm64-v8a"
             }
+        }
+
+        // build just two apks, a full x86 + a full arm
+        // these won't be uploaded but will be available for download
+        if (Boolean.valueOf(cdvBuildMultipleApks)) {
+            productFlavors {
+                x86 {
+                    versionCode defaultConfig.versionCode
+                    ndk {
+                        abiFilters "x86", "x86_64"
+                    }
+                }
+                armv7 {
+                    versionCode defaultConfig.versionCode
+                    ndk {
+                        abiFilters "armeabi-v7a", "arm64-v8a"
+                    }
+                }
+
+                armeabi {
+                    versionCode defaultConfig.versionCode
+                }
+                arm64 {
+                    versionCode defaultConfig.versionCode
+                }
+                x86_64 {
+                    versionCode defaultConfig.versionCode
+                }
+            }
+        }
+        aaptOptions {
+            ignoreAssetsPattern "models:module_energy:module_anyline_ocr:module_id:module_license_plate:module_barcode"
         }
     }
 
@@ -166,4 +201,14 @@ cdvPluginPostBuildExtras.add({
 		newTask.dependsOn(mergeTask)
 		processTask.dependsOn(newTask)
 	}
+
+    // filter out all the other build flavours (we're just build a full arm + full x86 apk)
+    if (cdvBuildMultipleApks != null) {
+        android.variantFilter { variant ->
+            def name = variant.flavors*.name[0]
+            if (name == "armeabi" || name == "arm64" || name == "x86_64") {
+                variant.setIgnore(true)
+            }
+        }
+    }
 })
